@@ -16,3 +16,8 @@ you also might want to edit the `dst_root` and
 
 * Run `npm start` or `node main.js`
 
+
+
+#### Use cases
+Nice if you hace jellyfin server installed with the
+(jellyfin-youtube-metadata-plugin)[https://github.com/ankenyr/jellyfin-youtube-metadata-plugin]
