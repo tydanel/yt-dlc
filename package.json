@@ -1,0 +1,21 @@
+{
+  "name": "yt-dlc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tydanel/yt-dlc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tydanel/yt-dlc/issues"
+  },
+  "homepage": "https://github.com/tydanel/yt-dlc#readme"
+}
