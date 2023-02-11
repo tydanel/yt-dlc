@@ -8,7 +8,7 @@ const cfg_root = fileURLToPath(new URL('.', import.meta.url));
 
 // Edit these to your preferences
 const dst_root = '/srv/media';
-const start_data = '20230205';
+const start_date = '20230205';
 
 function updateChannelDb({ libName, chanName, channel }) {
   const downloadPath = `${dst_root}/${libName}/${chanName}`;
@@ -27,7 +27,7 @@ function updateChannelDb({ libName, chanName, channel }) {
   const err = openSync(`${cfg_root}_logs/${libName}-${chanName}.err.txt`, 'a');
 
   const args = [
-    '--dateafter', start_data,
+    '--dateafter', start_date,
     '--break-on-reject',
     '--download-archive', `${cfg_root}_archives/${libName}-${chanName}-archive.txt`,
     '-ciw',
