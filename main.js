@@ -10,8 +10,8 @@ const cfg_root = fileURLToPath(new URL('.', import.meta.url));
 const dst_root = '/srv/media';
 const start_date = '20230205';
 
-function updateChannelDb({ libName, chanName, channel }) {
-  const downloadPath = `${dst_root}/${libName}/${chanName}`;
+function updateChannelDb({ lib_name, chan_name, channel }) {
+  const downloadPath = `${dst_root}/${lib_name}/${chan_name}`;
 
   if (!existsSync(downloadPath)) {
     mkdirSync(downloadPath, { recursive: true });
@@ -23,13 +23,13 @@ function updateChannelDb({ libName, chanName, channel }) {
     mkdirSync(`${cfg_root}_logs`)
   }
 
-  const out = openSync(`${cfg_root}_logs/${libName}-${chanName}.log.txt`, 'a');
-  const err = openSync(`${cfg_root}_logs/${libName}-${chanName}.err.txt`, 'a');
+  const out = openSync(`${cfg_root}_logs/${lib_name}-${chan_name}.log.txt`, 'a');
+  const err = openSync(`${cfg_root}_logs/${lib_name}-${chan_name}.err.txt`, 'a');
 
   const args = [
     '--dateafter', start_date,
     '--break-on-reject',
-    '--download-archive', `${cfg_root}_archives/${libName}-${chanName}-archive.txt`,
+    '--download-archive', `${cfg_root}_archives/${lib_name}-${chan_name}-archive.txt`,
     '-ciw',
     '-P', downloadPath,
     `https://www.youtube.com/${channel}/videos`,
@@ -55,8 +55,8 @@ Object.keys(config).forEach((key) => {
 
   channels.forEach((channel) => {
     updateChannelDb({
-      libName: key,
-      chanName: channel[0],
+      lib_name: key,
+      chan_name: channel[0],
       channel: channel[1],
     });
   });
