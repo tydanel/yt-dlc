@@ -3,8 +3,8 @@ Simple tool for downloading entire or portions of YouTube channels
 
 
 #### Dependencies
-(yt-dlp)[https://github.com/yt-dlp/yt-dlp]
-and its (dependencies)[https://github.com/yt-dlp/yt-dlp#dependencies]
+[yt-dlp](https://github.com/yt-dlp/yt-dlp)
+and its [dependencies](https://github.com/yt-dlp/yt-dlp#dependencies)
 
 #### Instructions
 * `git clone https://github.com/tydanel/yt-dlc.git`
