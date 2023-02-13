@@ -1,9 +1,9 @@
 {
     "TyTube": [
-        ["LinusTechTips", "@LinusTechTips"],
-        ["MikroTik", "@MikrotikLatvia"]
+        ["LinusTechTips", "@LinusTechTips", "20230205"],
+        ["MikroTik", "@MikrotikLatvia", "20230205"]
     ],
     "KyleTube": [
-        ["FISH ON SA", "@FishOnSA"]
+        ["FISH ON SA", "@FishOnSA", "20230205"]
     ]
 }

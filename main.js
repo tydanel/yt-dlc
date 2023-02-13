@@ -8,9 +8,9 @@ const cfg_root = fileURLToPath(new URL('.', import.meta.url));
 
 // Edit these to your preferences
 const dst_root = '/srv/media';
-const start_date = '20230205';
+// const start_date = '20230205';
 
-function updateChannelDb({ lib_name, chan_name, channel }) {
+function updateChannelDb({ lib_name, chan_name, channel, start_date }) {
   const downloadPath = `${dst_root}/${lib_name}/${chan_name}`;
 
   if (!existsSync(downloadPath)) {
@@ -58,6 +58,7 @@ Object.keys(config).forEach((key) => {
       lib_name: key,
       chan_name: channel[0],
       channel: channel[1],
+      start_date: channel[2] || '20230205'
     });
   });
 });
