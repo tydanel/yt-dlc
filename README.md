@@ -12,11 +12,11 @@ and its [dependencies](https://github.com/yt-dlp/yt-dlp#dependencies)
 Modify `channels.json` to suit your needs,
 you also might want to edit the `dst_root` and
 `start_date` variables.
-
 * Run `npm start` or `node main.js`
 
 
 
 #### Use cases
-Nice if you hace jellyfin server installed with the
-(jellyfin-youtube-metadata-plugin)[https://github.com/ankenyr/jellyfin-youtube-metadata-plugin]
+Nice if you have a jellyfin server with
+[jellyfin-youtube-metadata-plugin](https://github.com/ankenyr/jellyfin-youtube-metadata-plugin)
+installed just add all the folders output by this script to your library.
