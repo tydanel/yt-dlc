@@ -1,6 +1,5 @@
 ## YT-DLC 
-Simple tool for downloading entire or portions of YouTube channels
-
+An easy to use tool for building your own YouTube library.
 
 #### Dependencies
 [yt-dlp](https://github.com/yt-dlp/yt-dlp)
