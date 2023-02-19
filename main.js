@@ -2,7 +2,7 @@ import { readFileSync, existsSync, mkdirSync, openSync, closeSync, exists } from
 import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
 
-const controller = new AbortController();
+// const abort_controllers = [];
 const procs = [];
 const cfg_root = fileURLToPath(new URL('.', import.meta.url));
 
@@ -34,21 +34,30 @@ function updateChannelDb({ lib_name, chan_name, channel, start_date }) {
     '-P', downloadPath,
     `https://www.youtube.com/${channel}/videos`,
   ];
+  const controller = new AbortController();
 
   const proc = spawn('yt-dlp', args, {
     signal: controller.signal,
     stdio: ['ignore', out, err],
-  }, (error) => {
+  });
+  
+  proc.on('error', (error) => {
     closeSync(out);
     closeSync(err);
-    if (error) throw error;
+    if (error && error.code !== 'ABORT_ERR') throw error;
+  });
+
+  proc.on('exit', () => {
+    closeSync(out);
+    closeSync(err);
   });
 
   console.log('RUNNING: ', 'yt-dlp', args.join(' '));
-  procs.push(proc);
+  procs.push([proc, controller]);
 }
 
 const config = JSON.parse(readFileSync(`${cfg_root}channels.json`).toString());
+
 
 Object.keys(config).forEach((key) => {
   const channels = config[key];
@@ -64,5 +73,10 @@ Object.keys(config).forEach((key) => {
 });
 
 process.on('SIGINT', () => {
-  controller.abort();
+  for ( const [proc, controller] of procs )
+  {
+    console.log('Exiting' + proc.pid);
+    controller.abort();
+  }
+  console.log('....');
 });
