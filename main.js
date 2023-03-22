@@ -46,8 +46,6 @@ function updateChannelDb({ lib_name, chan_name, channel, start_date }) {
   });
   
   proc.on('error', (error) => {
-    closeSync(out);
-    closeSync(err);
     if (error && error.code !== 'ABORT_ERR') throw error;
   });
 
