@@ -39,6 +39,10 @@ function updateChannelDb({ lib_name, chan_name, channel, start_date }) {
   const proc = spawn('yt-dlp', args, {
     signal: controller.signal,
     stdio: ['ignore', out, err],
+  }, (error) => {
+    closeSync(out);
+    closeSync(err);
+    if (error && error.code !== 'ABORT_ERR') throw error;
   });
   
   proc.on('error', (error) => {
