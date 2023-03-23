@@ -75,10 +75,9 @@ Object.keys(config).forEach((key) => {
 });
 
 process.on('SIGINT', () => {
-  for ( const [proc, controller] of procs )
-  {
+  procs.forEach(([proc, abort_controller]) => {
     console.log('Exiting' + proc.pid);
-    controller.abort();
-  }
-  console.log('....');
+    abort_controller.abort();
+  });
+  console.log('Done....');
 });
